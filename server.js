@@ -7,7 +7,7 @@ var connect = require('connect');
 var route = require('connect-route');
 var connect_st = require('st');
 var connect_rate_limit = require('connect-ratelimit');
-var cors = require('connect-cors');
+
 var DocumentHandler = require('./lib/document_handler');
 
 // Load the configuration and set some defaults
