@@ -7,7 +7,7 @@ var connect = require('connect');
 var route = require('connect-route');
 var connect_st = require('st');
 var connect_rate_limit = require('connect-ratelimit');
-
+var cors = require('connect-cors');
 var DocumentHandler = require('./lib/document_handler');
 
 // Load the configuration and set some defaults
@@ -106,6 +106,11 @@ if (config.rateLimits) {
   config.rateLimits.end = true;
   app.use(connect_rate_limit(config.rateLimits));
 }
+
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 // first look at API calls
 app.use(route(function(router) {
